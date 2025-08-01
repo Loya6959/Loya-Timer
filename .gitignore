@@ -1,3 +1,5 @@
 /danmaku_receiver/key_config.json
 /local_demo/
 /.gitignore
+/__pycache__/
+/.vscode/
