@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+
+    <head>
+        <title>Loya Timer - Config</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/file/css$index.css" rel="stylesheet" />
+    </head>
+
+    <style>
+        :root {
+            --theme-color: {{tcolor}};
+        }
+    </style>
+
+    <body>
+        <header>
+            <p>Loya Timer: Config</p>
+        </header>
+
+        <div class="main-view">
+            <div class="left-bar">
+                <h4>选项</h4>
+                <p id="c" data-is-select="1" onclick="sw_config('c')">配置</p>
+                <p id="d" data-is-select="0" onclick="sw_config('d')">预览</p>
+                <p id="a" data-is-select="0" onclick="sw_config('a')">关于</p>
+            </div>
+
+            <div class="right-view">
+                <div data-is-select="1" class="c">
+                    <h5>配置</h5>
+                    <form id="config_form">
+                        <label>主题颜色:<input type="color" name="theme-color"
+                                value="{{cfg['user']['theme-color']}}" /></label>
+
+                        <label>直播房号:<input type="text" name="live-room" value="{{cfg['user']['live-room']}}" /></label>
+
+                        <label>基准时间:<input type="number" name="base-time" value="{{cfg['user']['base-time']}}" />秒</label>
+
+                        <label>自动存档:<select name="auto-save">
+                            %if cfg['user']['auto-save'] is True:
+                                <option value="True" selected >启用</option>
+                                <option value="False">禁用</option>
+                            %else:
+                                <option value="True">启用</option>
+                                <option value="False" selected>禁用</option>
+                            %end
+                        </select></label>
+
+                        <label>自动消耗:<select name="auto-use-save">
+                            %if cfg['user']['auto-use-save'] is True:
+                                <option value="True" selected >启用</option>
+                                <option value="False">禁用</option>
+                            %else:
+                                <option value="True">启用</option>
+                                <option value="False" selected>禁用</option>
+                            %end
+                        </select></label>
+
+                        <label>消耗配额:<input type="number"
+                             name="auto-save-deplete" value="{{cfg['user']['auto-save-deplete']}}" />秒</label>
+                            
+                        <label>同步间隔:<input type="number" name="auto-flush-time" value="{{cfg['user']['auto-flush-time']}}" />秒</label>
+                        
+                        <div class="bt">
+                            <button type="submit">更新设置</button>
+                            <button type="reset">重置</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div data-is-select="0" class="d">
+                    <h5>预览</h5>
+                    <p>请将如下链接复制到需要引用计时器的位置【宽高：500x240】:</p>
+                    <code>{{timer_link}}</code>
+                    <h5>计时器操作</h5>
+                    <button onclick="switch_run('1')">暂停</button>
+                    <button onclick="switch_run('0')">继续</button>
+                    <br />
+                    <button onclick="clear_timer_id()">清除实例</button>
+                    <button onclick="deplete_save_time()">消耗存档</button>
+                    <button onclick="reset_base_time()">重置计时</button>
+                    <button onclick="save_config()">触发存档</button>
+                    <br />
+                    <h5>计时器状态</h5>
+                    <div class="t-data">
+                        <p>是否暂停: <span id="is_stop">否</span></p>
+                        <p>是否归零: <span id="is_clear">否</span></p>
+                        <p>存档剩余: <span id="save_time">00:00:00</span></p>
+                    </div>
+                    <h5>触发器</h5>
+                    <form id="timer_add">
+                        <label>名称<input name="name" type="text" required /></label>
+                        <label>增减量<input name="add" type="number" required /></label>
+                        <button type="reset">清空</button>
+                        <button type="submit">添加触发器</button>
+                    </form>
+                    <button onclick="flush_trigger()">刷新触发器列表</button>
+                    <div class="add_timer">
+                        pass
+                    </div>
+                </div>
+
+                <div data-is-select="0" class="a">
+                    <h5>关于本项目</h5>
+
+                    <p>本项目由<a href="https://space.bilibili.com/402091191" target="_blank">络亚Loya</a>开发，目前以闭源形式发布。</p>
+                    <p>本项目后端使用<a href="https://python.org" target="_blank">Python</a>开发，唯一依赖的第三方包是<a href="https://bottlepy.org/" target="_blank">bottle</a>，它是一个只使用Python标准库实现的Web框架。项目已按照bottle附带协议的要求将许可证附上。</p>
+                    <p>本项目使用<a href="https://pyinstaller.org/" target="_blank">Pyinstaller</a>打包发行。项目已按照Pyinstaller附带协议的要求将许可证附上。</p>
+                    <p>许可证位于包内的LICENSE文件夹（两个包单独的许可证）。</p>
+                    <p>本项目前端部分未使用任何第三方包/模块，仅使用标准HTML/CSS/JS实现。</p>
+                    <p>本项目的所有界面设计均由本人设计（虽然设计的很烂就是了，这个项目我只想保证最低限度的使用）。后续可能会优化项目的UI。</p>
+                    <p>项目当前为闭源发布，禁止二次分发；后续若变更许可证会另行公告（例如将源码直接发布到github）。</p>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script src="/file/js$index.js"></script>
+    <script src="/file/js$index_trigger.js"></script>
+
+</html>

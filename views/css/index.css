@@ -1,0 +1,201 @@
+body {
+    margin: 0;
+}
+
+:root {
+    --theme-color: #9B33F0
+}
+
+header {
+    background-color: var(--theme-color);
+    height: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+
+    & p {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: bolder;
+        color: #FFFFFF;
+
+        &::before {
+            content: "";
+            margin-right: 35px;
+        }
+    }
+}
+
+.main-view {
+    height: calc(100vh - 45px);
+    display: grid;
+    grid-template-columns: minmax(180px, 10%) auto;
+}
+
+.main-view .left-bar {
+    display: flex;
+    flex-direction: column;
+
+    border-right: 1px solid #686868;
+
+    gap: 5px;
+
+    & h4 {
+        margin: 0;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        width: 95%;
+
+        color: var(--theme-color);
+
+        border-bottom: 1px solid var(--theme-color);
+    }
+
+    & p {
+        font-size: 1.2rem;
+        border-top: 1px solid var(--theme-color);
+        border-bottom: 1px solid var(--theme-color);
+        text-align: center;
+        cursor: pointer;
+        margin: 0;
+
+        &:hover {
+            background-color: var(--theme-color);
+            color: #FFFFFF;
+        }
+
+        &[data-is-select="1"] {
+            background-color: var(--theme-color);
+            color: #FFFFFF;
+        }
+    }
+}
+
+.main-view .right-view {
+    padding: 5px;
+
+    & div[data-is-select="0"] {
+        display: none;
+    }
+
+    & div {
+        & h5 {
+            font-size: 1.5rem;
+            margin: 0;
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--theme-color);
+            color: var(--theme-color);
+
+            &:not(:first-child) {
+                margin-top: 25px;
+            }
+        }
+
+        padding: 10px;
+
+        & button {
+            background-color: #00000000;
+            color: var(--theme-color);
+            border: 1px solid var(--theme-color);
+            font-size: 1.1em;
+            border-radius: 5px;
+            padding: 3px;
+            font-weight: 500;
+            transition: all 0.2s;
+            cursor: pointer;
+            margin: 3px;
+
+            &:hover {
+                background-color: var(--theme-color);
+                color: #ffffff;
+                transition: all 0.2s;
+            }
+        }
+    }
+
+    & .c {
+        & form {
+            display: grid;
+            gap: 5px;
+
+            & label {
+                display: block;
+
+                & input,
+                select {
+                    margin-left: 15px;
+                }
+            }
+
+            & div {
+                padding: 0;
+            }
+        }
+    }
+
+    & .d {
+        & code {
+            display: block;
+            background-color: var(--theme-color);
+            width: 50%;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        & .t-data p {
+            margin: 0;
+        }
+
+        & .add_timer {
+            border: 2px solid var(--theme-color);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            margin-top: 10px;
+
+            & #trigger {
+
+                border: 1px solid var(--theme-color);
+
+                & span+span {
+                    &::before {
+                        content: "";
+                        border-left: 1px solid var(--theme-color);
+                        margin-right: 5px;
+                    }
+
+                    margin-left: 5px;
+                }
+
+                & span {
+                    color: var(--theme-color);
+                }
+
+                & span span {
+                    color: initial;
+                }
+            }
+        }
+    }
+
+    & .a {
+        & a {
+            text-decoration: none;
+            color: var(--theme-color);
+        }
+
+        & div {
+            padding: 0;
+
+            & img {
+                height: 60px;
+                user-select: none;
+                -webkit-user-drag: none;
+            }
+        }
+    }
+}

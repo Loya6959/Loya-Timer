@@ -1,0 +1,33 @@
+{
+    "loya": {
+        "debug": false,
+        "reload": false,
+        "port": 8000
+    },
+    "user": {
+        "theme-color": "#66ccff",
+        "live-room": "",
+        "base-time": 7200,
+        "auto-save": false,
+        "auto-use-save": false,
+        "auto-save-deplete": 7200,
+        "auto-flush-time": 5
+    },
+    "save": {
+        "save-time": 0,
+        "gifts": [
+            {
+                "name": "加时(舰长)",
+                "add": 2400
+            },
+            {
+                "name": "减时(舰长)",
+                "add": -2400
+            },
+            {
+                "name": "减时(情书)",
+                "add": -300
+            }
+        ]
+    }
+}
