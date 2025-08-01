@@ -1,7 +1,7 @@
 {
     "loya": {
-        "debug": false,
-        "reload": false,
+        "debug": true,
+        "reload": true,
         "port": 8000
     },
     "user": {
