@@ -1,0 +1,6 @@
+/env
+/danmaku_receiver/key_config.json
+/local_demo
+/__pycache__
+/.vscode
+/run-dev.py
