@@ -1,4 +1,5 @@
 {
     "access_key_id":"Your Key ID Here",
-    "access_key_secret":"Your Key Secret Here"
+    "access_key_secret":"Your Key Secret Here",
+    "usage": "put id and secret in this file, and rename it to key_config.json"
 }
