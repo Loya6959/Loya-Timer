@@ -1,0 +1,3 @@
+[submodule "external/blivedm"]
+	path = external/blivedm
+	url = https://github.com/xfgryujk/blivedm.git
