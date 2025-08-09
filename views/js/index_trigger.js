@@ -90,10 +90,10 @@ async function flush_trigger() {
     trigger.innerHTML = trigger_list;
 }
 
-trigger_form.addEventListener("submit", (e) => {
+trigger_form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    add_trigger();
-    flush_trigger();
+    await add_trigger();
+    await flush_trigger();
     trigger_form.reset();
 })
 
