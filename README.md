@@ -7,7 +7,10 @@
 ## 引用项目
 
 [bottle](https://bottlepy.org/): 一个只使用Python标准库、极其轻量化的Web框架，这是开发中唯一使用的模块。
+
 [Pyinstaller](https://pyinstaller.org/): 一个方便快捷的打包工具，项目的可执行文件使用它生成。
+
+[blivedm](https://github.com/xfgryujk/blivedm): Python获取bilibili直播弹幕的库，使用WebSocket协议，支持web端和B站直播开放平台两种接口
 
 ## 许可证
 
