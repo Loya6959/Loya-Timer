@@ -16,6 +16,8 @@ from bottle import FormsDict
 from bottle import request
 from bottle import static_file
 from bottle import template
+from bottle import HTTPResponse
+from bottle import HTTPError
 from uuid import uuid4
 
 
@@ -66,11 +68,11 @@ def add_time() -> NoReturn:
 
 
 @loya_timer_root.route("/favicon.ico")
-def favicon_ico() -> Any:
+def favicon_ico() -> HTTPResponse | HTTPError:
     """
     一个很蠢的接口，这个接口用来解决前端favicon.ico 404 NOT FOUND的错误
     Returns:
-        Any: 主要我也不知道这玩意儿到底会返回什么 也许是单纯的bytes？
+        (HTTPResponse | HTTPError): 正常的返回，或者资源出现各种问题时的错误返回
     """
     return static_file("favicon.ico", ROOT_PATH)
 
@@ -100,14 +102,14 @@ def save_config() -> NoReturn:
 
 # file (接口数: 1)
 @loya_timer_root.route("/file/<file_type>$<file_name>")
-def get_file(file_type: str, file_name: str) -> Any:
+def get_file(file_type: str, file_name: str) -> HTTPResponse | HTTPError:
     """
     请求各种资源的接口 使用$符号分割文件类型和文件名
     Args:
         file_type(str): 文件类型
         file_name(str): 文件名
     Returns:
-        Any: 反正是资源 我想应该没有自定义函数用这个函数的返回值
+        (HTTPResponse | HTTPError): 正常的返回，或者资源出现各种问题时的错误返回
     """
 
     web_get_path: Path = Path(ROOT_PATH)
@@ -402,7 +404,7 @@ def trigger_del() -> dict[Literal["ok"], Literal["yes", "no"]]:
 # 两个主要视图
 
 @loya_timer_root.route("/timer")
-def timer_view() -> Any:
+def timer_view() -> HTTPResponse | HTTPError:
     """计时器"""
     global timer_id, synchronous_start
     tid = str(uuid4())
@@ -415,7 +417,7 @@ def timer_view() -> Any:
 
 
 @loya_timer_root.route("/")
-def index_view() -> Any:
+def index_view() -> HTTPResponse | HTTPError:
     """主页面 同时也是配置页面"""
     return template("index.html", tcolor=cfg["user"]["theme-color"],
                     cfg=cfg,
